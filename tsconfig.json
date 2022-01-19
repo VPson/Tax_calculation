@@ -5,14 +5,14 @@
     "experimentalDecorators": true,   
     "emitDecoratorMetadata": true,    
     "allowJs": true,                  
-    "module": "commonjs",   
-    "rootDir": "./src",               
+    "module": "commonjs",  
+    "outDir": "./dist",               
+    // "rootDir": "./src",               
     "typeRoots": [
       "./node_modules/@types",
       "./src/@types"
     ],                                
     "resolveJsonModule": true,        
-    "outDir": "./dist",               
     "removeComments": true,           
     "esModuleInterop": true,                    
     "forceConsistentCasingInFileNames": true,   
