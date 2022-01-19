@@ -1,11 +1,12 @@
-import express,{Response, Request} from 'express'
+import express from "express";
 
-const app = express()
+const app = express();
 
-app.use(express.json())
+app.get("/", (request, response) => {
+	response.json({ message: "fala filho da puta"});
+});
 
-app.get('/', (Request, Response)=>{
-	Response.send("fala filho da puta")
-})
+app.listen(3000, () => console.log("rodando"));
 
-app.listen(3000, () => console.log('Rodando'))
+
+//ts-node dev serve para rodar o servidor normalmente sem criar umas pasta js 
