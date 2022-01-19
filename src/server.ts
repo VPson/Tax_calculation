@@ -1,10 +1,11 @@
 import express from 'express';
+import {router} from './routes/lanc.routes';
 
 const app = express();
 
-app.get('/', (request, response) => {
-	response.json({ message: 'fala filho da puta'});
-});
+app.use(express.json());
+
+app.use(router);
 
 app.listen(3000, () => console.log('rodando'));
 
