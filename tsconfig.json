@@ -7,7 +7,7 @@
     "allowJs": true,                  
     "module": "commonjs",  
     "outDir": "./dist",               
-    // "rootDir": "./src",               
+    "rootDir": "./src",               
     "typeRoots": [
       "./node_modules/@types",
       "./src/@types"
@@ -30,6 +30,9 @@
       "@models/*": ["./src/models/*"],
       "@views/*": ["./src/views/*"],
       "@config/*": ["./src/config/*"]
-    }                           
-  }
+    }
+  },
+  "include": [
+    "src/**/*"
+  ]  
 }
