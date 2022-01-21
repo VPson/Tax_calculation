@@ -23,6 +23,9 @@ class Stock {
 	@Column()
 	valueSell: number;
 
+	@Column()
+	total: number;
+
 }
 
 export { Stock };

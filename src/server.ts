@@ -1,9 +1,10 @@
 import 'reflect-matedata';
 import express from 'express';
-import {router} from './routes/lanc.routes';
-import createConnection from './shared/infra/typeorm';
+import { router } from './routes/lanc.routes';
+import { createConnection } from 'typeorm';
 
 createConnection();
+
 const app = express();
 
 app.use(express.json());
