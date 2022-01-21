@@ -18,7 +18,7 @@
     "forceConsistentCasingInFileNames": true,   
     "noImplicitAny": true,                      
     "skipLibCheck": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {  
       /* 
       serve para eu nao ter que fazer ../../../ (...) ;
@@ -26,10 +26,8 @@
       tem que instalar tsconfig-paths -D
       depois nos scripts add --> -r tsconfig-paths/register <-- logos apos ts-node dev 
       */
-      "@controllers/*": ["./src/controllers/*"],
-      "@models/*": ["./src/models/*"],
-      "@views/*": ["./src/views/*"],
-      "@config/*": ["./src/config/*"]
+      "@modules/*": ["modules/*"],
+      "@shared/*" : ["shared/*"],
     }
   },
   "include": [

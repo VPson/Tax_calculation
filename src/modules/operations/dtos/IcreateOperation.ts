@@ -1,4 +1,4 @@
-interface IcreateStockDTO {
+interface IcreateOperationDTO {
 	id: string,
 	nameStock: string,
 	quantity: number,
@@ -9,4 +9,4 @@ interface IcreateStockDTO {
 	total: number
 }
 
-export { IcreateStockDTO };
+export { IcreateOperationDTO };
