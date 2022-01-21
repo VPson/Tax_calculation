@@ -25,7 +25,6 @@ class Stock {
 
 	@Column()
 	total: number;
-
 }
 
 export { Stock };

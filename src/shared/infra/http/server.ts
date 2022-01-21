@@ -1,6 +1,6 @@
-import 'reflect-matedata';
+import 'reflect-metadata';
 import express from 'express';
-import { router } from './routes/lanc.routes';
+import { router } from '../../../routes/lanc.routes';
 import { createConnection } from 'typeorm';
 
 createConnection();

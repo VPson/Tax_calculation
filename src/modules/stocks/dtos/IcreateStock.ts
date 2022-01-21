@@ -5,7 +5,8 @@ interface IcreateStockDTO {
 	dateBuy: Date,
 	dateSell: Date,
 	valueBuy: number,
-	valueSell: number
+	valueSell: number,
+	total: number
 }
 
 export { IcreateStockDTO };
