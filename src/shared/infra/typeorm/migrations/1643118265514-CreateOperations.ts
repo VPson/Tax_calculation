@@ -1,12 +1,12 @@
 import {MigrationInterface, QueryRunner, Table} from 'typeorm';
 
-export class CreateOperation1642803430474 implements MigrationInterface {
+export class CreateOperations1643118265514 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
                 name: 'operations',
-                columns: [
+                columns:[
                     {
                         name: 'id',
                         type: 'uuid',
@@ -21,9 +21,9 @@ export class CreateOperation1642803430474 implements MigrationInterface {
                         type: 'integer'
                     },
                     {
-						name: 'dateBuy',
-						type: 'date',
-					},
+                        name: 'dateBuy',
+                        type: 'date'
+                    },
                     {
                         name: 'dateSell',
                         type: 'date'
@@ -48,17 +48,6 @@ export class CreateOperation1642803430474 implements MigrationInterface {
                         name: 'user_id',
                         type: 'varchar'
                     }
-                ],
-                foreignKeys: [
-                    {
-                    name: 'FKUserId',
-                    referencedTableName: 'users',
-                    referencedColumnNames: ['id'],
-                    columnNames: ['user_id'],
-                    onDelete: 'SET NULL',
-                    onUpdate: 'SET NULL'
-                    }
-
                 ]
             })
         );

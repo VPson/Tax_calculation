@@ -1,5 +1,7 @@
-import { User } from 'src/modules/users/infra/typeorm/entities/User';
+import { User } from '@modules/users/infra/typeorm/entities/User';
+
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
+
 import { v4 as uuidV4 } from 'uuid';
 
 @Entity('operations')

@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  database: #ESSE É O NOME DO SERVICE QUE DEVE ESTAR NO ARQUIVO DE CRIAÇÃO DE CONEXÃO
+    image: postgres
+    container_name: database_calculation
+    restart: always
+    ports: 
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=calculation
+      - POSTGRES_DB=fonfon
+    volumes:
+      - pgdata:/data/postgres
+
+  app:
+    build: .
+    container_name: app_calculation
+    restart: always
+    ports: 
+      - 3000:3000
+    volumes: 
+      - .:/usr/app
+    depends_on:
+      - database
+
+volumes:
+  pgdata:
+    driver: local
