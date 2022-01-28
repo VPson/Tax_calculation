@@ -16,10 +16,8 @@ module.exports = {
 	plugins: [
 		['module-resolver', { /* caminhos dos paths para reconhecer os @ no arquivo js */
 			alias: {
-				'@congis': '.src/congis',
-				'@models': './src/models',
-				'@controllers': './src/controllers',
-				'@views': './src/views'
+				'@modules': './src/modules',
+				'@shared': './src/shared'
 			}
 		}]
 	],

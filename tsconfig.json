@@ -1,34 +1,32 @@
 {
   "compilerOptions": {
     "target": "es2017",               
-    "lib": ["es6"],             
+    "module": "commonjs",  
+
+		"rootDir": "./",    
+
     "baseUrl": "./src",                           
     "paths": {
-			"@modules/*": ["modules/*"],
-			"@shared/*": ["shared/*"],
+			"@modules/*": ["modules/*"]
 		},      
-    "experimentalDecorators": true,   
-    "emitDecoratorMetadata": true,    
+    "esModuleInterop": true,       
+
+    "experimentalDecorators": true,        
+		"emitDecoratorMetadata": true,      
+    "skipLibCheck": true,                          
+    "forceConsistentCasingInFileNames": true,      
+		"resolveJsonModule": true,
+    
+    "lib": ["es6"],   
+    "noImplicitAny": true,  
+    "removeComments": true,  
     "allowJs": true,                  
-    "module": "commonjs",  
     "outDir": "./dist",               
-    "rootDir": "./",               
     "typeRoots": [
       "./node_modules/@types",
       "./src/@types"
-    ],                                
-    "esModuleInterop": true,                    
-    "resolveJsonModule": true,        
-    "removeComments": true,           
-    "forceConsistentCasingInFileNames": true,   
-    "noImplicitAny": true,                      
-    "skipLibCheck": true,
+    ]              
   }
 }
 
-      /* 
-      serve para eu nao ter que fazer ../../../ (...) ;
-      tem q fazer esse  baseUrl:"."
-      tem que instalar tsconfig-paths -D
-      depois nos scripts add --> -r tsconfig-paths/register <-- logos apos ts-node dev 
-      */
+

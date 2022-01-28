@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel src --extensions \"./js,.ts\" --out-dir dist --copy-files --no-copy-ignore",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli",
-    "start": "node dist/server.js",
+    "start": "ts-node -r tsconfig-paths/register dist/server.js",
     "dev": "ts-node-dev --respawn --inspect --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts",
     "test": "jest"
   },
@@ -18,6 +18,7 @@
     "@babel/node": "^7.16.8",
     "@babel/preset-env": "^7.16.10",
     "@babel/preset-typescript": "^7.16.7",
+    "@types/bcrypt": "^5.0.0",
     "@types/express": "^4.17.13",
     "@types/jest": "^27.4.0",
     "@types/node": "^17.0.10",
@@ -33,9 +34,11 @@
     "typescript": "^4.5.4"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "express": "^4.17.2",
     "pg": "^8.7.1",
     "reflect-metadata": "^0.1.13",
+    "tsyringe": "^4.6.0",
     "typeorm": "^0.2.41",
     "uuid": "^8.3.2"
   }
