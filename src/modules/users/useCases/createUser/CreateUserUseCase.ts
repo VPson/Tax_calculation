@@ -1,14 +1,8 @@
 import { hash } from 'bcrypt';
 import { inject, injectable } from 'tsyringe';
-import { User } from '@modules/users/infra/typeorm/entities/User';
-import { IUsersRepository } from '@modules/users/repositories/IUsersRepository';
 
-interface IRequest {
-	name: string;
-	username: string;
-	password: string;
-	email: string;
-}
+import { IUsersRepository } from '@modules/users/repositories/IUsersRepository';
+import { ICreateUserDTO } from '@modules/users/dtos/ICreateUserDTO';
 
 @injectable()
 class CreateUserUseCase {
@@ -17,18 +11,22 @@ class CreateUserUseCase {
 		private usersRepository: IUsersRepository
 	){}
 
-	async execute({ name, username, password, email }: IRequest): Promise<User> {
+	async execute({ name, username, password, email }: ICreateUserDTO): Promise<void> {
+		const userAlreadyExists = await this.usersRepository.findByEmailAndUsername(email,username);
+
+		if(userAlreadyExists){
+			throw new Error('A user has already been registered with this email or username!');
+		}
 
 		const passwordHash = await hash(password, 8);
 
-		const user = await this.usersRepository.create({
+		await this.usersRepository.create({
 			name,
 			username,
 			password: passwordHash,
 			email
 		});
 
-		return user;
 	}
 
 }

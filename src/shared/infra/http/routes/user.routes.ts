@@ -1,9 +1,11 @@
+import { CreateUserController } from '@modules/users/useCases/createUser/CreateUserController';
 import { Router } from 'express';
 
-const user = Router();
+const userRoutes = Router();
+
+const createUserController = new CreateUserController();
 
 // to create a user
-user.post('/');
+userRoutes.post('/', createUserController.handle);
 
-
-export { user };
+export { userRoutes };

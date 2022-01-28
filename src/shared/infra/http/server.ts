@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+import '@shared/container';
 import express from 'express';
 import { routes } from './routes';
 import { createConnection } from 'typeorm';

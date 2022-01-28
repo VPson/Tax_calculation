@@ -10,7 +10,7 @@ class UserRepositoryInMemory implements IUsersRepository{
 		username,
 		password,
 		email
-	}: ICreateUserDTO): Promise<User> {
+	}: ICreateUserDTO): Promise<void> {
 		const user = new User();
 
 		Object.assign(user, {
@@ -20,7 +20,10 @@ class UserRepositoryInMemory implements IUsersRepository{
 			email
 		});
 		this.users.push(user);
-		return user;
+	}
+
+	async findByEmailAndUsername(email: string, username: string): Promise<User> {
+		return this.users.find((user) => user.email === email && user.username === username);
 	}
 	
 }

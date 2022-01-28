@@ -7,7 +7,7 @@
     "build": "babel src --extensions \"./js,.ts\" --out-dir dist --copy-files --no-copy-ignore",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli",
     "start": "ts-node -r tsconfig-paths/register dist/server.js",
-    "dev": "ts-node-dev --respawn --inspect --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts",
+    "dev": "ts-node-dev -r tsconfig-paths/register --respawn --inspect --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts",
     "test": "jest"
   },
   "keywords": [],

@@ -14,10 +14,9 @@ class CreateUserController {
 			username,
 			password,
 			email
-		});
+		});	
 
 		return res.status(201).json(user);
-
 	}
 }
 
