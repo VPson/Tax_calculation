@@ -25,7 +25,6 @@ describe('Create Operation', () => {
 			fees: 0.1,
 			total: 200,
 		});
-		console.log(operation);
 		expect(operation).toHaveProperty('id');
 	});
 
