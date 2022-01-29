@@ -1,7 +1,8 @@
 import { IcreateOperationDTO } from '../dtos/IcreateOperation';
+import { Operation } from '../infra/typeorm/entities/Operation';
 
-interface IStocksRepository {
-	create(data: IcreateOperationDTO): Promise<void> ;
+interface IOperationsRepository {
+	create(data: IcreateOperationDTO): Promise<Operation> ;
 }
 
-export { IStocksRepository };
+export { IOperationsRepository };

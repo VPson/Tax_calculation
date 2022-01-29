@@ -1,4 +1,4 @@
-import { User } from '../../../../users/infra/typeorm/entities/User';
+import { User } from '@modules/users/infra/typeorm/entities/User';
 
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
 
@@ -32,6 +32,9 @@ class Operation {
 
 	@Column()
 	total: number;
+
+	@Column()
+	type: string;
 
 	@ManyToOne(() => User)
 	@JoinColumn({ name: 'user_id' })
