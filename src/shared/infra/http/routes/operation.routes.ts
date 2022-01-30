@@ -1,20 +1,11 @@
+import { CreateOperationsController } from '@modules/operations/useCases/createOperation/CreateOperationController';
+import { ensureAuthenticated } from '../middlewares/ensureAuthenticate';
 import { Router } from 'express';
 
-const operation = Router();
+const operationRoutes = Router();
 
-operation.get('/', (requeste, response) => {
-	// find operations
-	response.json({ message: 'fala filho da puta'});
-});
+const createOperationsContoller = new CreateOperationsController();
 
-operation.post('./create', (req, res) =>{
-	//create and save operations
-	return res.send('criado');
-});
+operationRoutes.post('/', ensureAuthenticated, createOperationsContoller.handle);
 
-operation.delete('./stock/:id', (req, res) => {
-	// find and delete operations
-	res.send('deletado');
-});
-
-export { operation }; 
+export { operationRoutes };

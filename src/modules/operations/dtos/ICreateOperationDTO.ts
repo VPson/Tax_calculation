@@ -1,4 +1,4 @@
-interface IcreateOperationDTO {
+interface ICreateOperationDTO {
 	nameStock: string,
 	quantity: number,
 	dateBuy: Date,
@@ -7,7 +7,8 @@ interface IcreateOperationDTO {
 	valueSell: number,
 	type: string,
 	fees: number,
-	total: number
+	total: number,
+	user_id?: string
 }
 
-export { IcreateOperationDTO };
+export { ICreateOperationDTO };

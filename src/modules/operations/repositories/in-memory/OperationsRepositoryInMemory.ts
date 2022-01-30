@@ -1,4 +1,4 @@
-import { IcreateOperationDTO } from '@modules/operations/dtos/IcreateOperation';
+import { ICreateOperationDTO } from '@modules/operations/dtos/ICreateOperationDTO';
 import { Operation } from '@modules/operations/infra/typeorm/entities/Operation';
 import { IOperationsRepository } from '../IOperationsRepository';
 
@@ -14,7 +14,7 @@ class OperationsRepositoryInMemory implements IOperationsRepository{
 		valueBuy,
 		valueSell,
 		total
-	}: IcreateOperationDTO): Promise<Operation>{
+	}: ICreateOperationDTO): Promise<Operation>{
 		const operation = new Operation();
 
 		Object.assign(operation, {

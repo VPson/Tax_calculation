@@ -1,6 +1,7 @@
 import { IUsersRepository } from '@modules/users/repositories/IUsersRepository';
 import { compare } from 'bcrypt';
 import { sign } from 'jsonwebtoken';
+import { inject, injectable } from 'tsyringe';
 
 interface IRequest {
 	username: string;
@@ -17,10 +18,10 @@ interface IResponse {
 	token: string;
 }
 
-// @injectable()
+@injectable()
 class AuthenticateUserUseCase {
 	constructor(
-		// @inject('UsersRepositoy')
+		@inject('UsersRepository')
 		private usersRepository: IUsersRepository
 	){}
 
