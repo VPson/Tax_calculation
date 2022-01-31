@@ -1,4 +1,5 @@
 import { UsersRepositoryInMemory } from '@modules/users/repositories/in-memory/UsersRepositoryInMemory';
+import { AppError } from '@shared/errors/AppError';
 import { CreateUserUseCase } from './CreateUserUseCase';
 
 let usersRepositoryInMemory: UsersRepositoryInMemory;
@@ -34,7 +35,7 @@ describe('Create User', () => {
 				password: 'senha2',
 				email: 'emailTest'
 			});
-		}).rejects.toBeInstanceOf(Error);
+		}).rejects.toBeInstanceOf(AppError);
 	});
 
 });

@@ -1,5 +1,6 @@
 import { ICreateUserDTO } from '@modules/users/dtos/ICreateUserDTO';
 import { UsersRepositoryInMemory } from '@modules/users/repositories/in-memory/UsersRepositoryInMemory';
+import { AppError } from '@shared/errors/AppError';
 import { CreateUserUseCase } from '../createUser/CreateUserUseCase';
 import { AuthenticateUserUseCase } from './AuthenticateUserUseCase';
 
@@ -32,4 +33,42 @@ describe('Authenticate User', () => {
 
 		expect(result).toHaveProperty('token');
 	});
+
+	it('should not be able to authenticate user without username or email created', async () => {
+		expect(async () => {
+			const user: ICreateUserDTO = {
+				name: 'vinicius',
+				username: 'viniciusvsp',
+				password: '123',
+				email: 'vinicius@gmail.com'
+			};
+			await createUserUseCase.execute(user);
+	
+			await authenticateUserUseCase.execute({
+				email: 'emailTeste', 
+				username: 'usernameTeste',
+				password: user.password
+			});
+		}).rejects.toBeInstanceOf(AppError);
+	});
+
+	it('should not be able to authenticate user with wrong passoword', async () => {
+		expect(async () => {
+			const user: ICreateUserDTO = {
+				name: 'vinicius',
+				username: 'viniciusvsp',
+				password: '123',
+				email: 'vinicius@gmail.com'
+			};
+			await createUserUseCase.execute(user);
+	
+			await authenticateUserUseCase.execute({
+				email: user.email, 
+				username: user.username,
+				password: 'senhaTeste'
+			});
+		}).rejects.toBeInstanceOf(AppError);
+	});
+
+
 });

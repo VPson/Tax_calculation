@@ -1,5 +1,6 @@
 import { Operation } from '@modules/operations/infra/typeorm/entities/Operation';
 import { IOperationsRepository } from '@modules/operations/repositories/IOperationsRepository';
+import { AppError } from '@shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
 
 interface IRequest {
@@ -39,7 +40,7 @@ class CreateOperationUseCase {
 			}else if(dateSell > dateBuy){
 				type = 'swingTrade';
 			}else if (dateBuy>dateSell){
-				throw new Error('The sale date can not be grater than purchase date!');
+				throw new AppError('The sale date can not be grater than purchase date!');
 			}
 
 			const totalBuy = valueBuy * quantity;
