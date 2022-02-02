@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import '@shared/container';
+import 'express-async-errors';
 import express, { Request, Response } from 'express';
 import { routes } from './routes';
 import { createConnection } from 'typeorm';
@@ -13,16 +14,16 @@ app.use(express.json());
 
 app.use(routes);
 
-app.use((err: Error, req: Request, res: Response ) => {
-	if( err instanceof AppError) {
+app.use((err: Error, req: Request, res: Response) => {
+	if (err instanceof AppError) {
 		return res.status(err.statusCode).json({
-			message: err.message
+			message: err.message,
 		});
 	}
 
 	return res.status(501).json({
 		status: 'error',
-		message: `Internal server error - ${err.message}`
+		message: `Internal server error - ${err.message}`,
 	});
 });
 

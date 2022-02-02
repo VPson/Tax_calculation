@@ -41,6 +41,17 @@ class OperationsRepository implements IOperationsRepository{
 			return operation;
 		}
 	
+	async	findById(id: string): Promise<Operation> {
+		const operation = await this.repository.findOne({ id });
+		return operation;
+	}
+
+	async delete(id: string): Promise<Operation[]> {
+		const operation = await this.repository.findOne({ id });
+		await this.repository.remove(operation);
+
+		return this.repository.find();
+	}
 }
 
 export { OperationsRepository };

@@ -2,7 +2,8 @@ import { ICreateOperationDTO } from '@modules/operations/dtos/ICreateOperationDT
 import { Operation } from '@modules/operations/infra/typeorm/entities/Operation';
 import { IOperationsRepository } from '../IOperationsRepository';
 
-class OperationsRepositoryInMemory implements IOperationsRepository{ 
+class OperationsRepositoryInMemory implements IOperationsRepository{
+
 	operations: Operation[] = [];
 	
 	async create({
@@ -30,6 +31,20 @@ class OperationsRepositoryInMemory implements IOperationsRepository{
 		this.operations.push(operation);
 
 		return operation;
+	}
+
+	async findById(id: string): Promise<Operation> {
+		// tem que criar uma operação para podr apagar]
+		const operation = this.operations.find((operation) => operation.id === id);
+		return operation;
+	}
+
+	async delete(id: string): Promise<Operation[]> {
+		const operations = await this.operations.filter((operation) => {
+			return operation.id !== id;
+		});
+
+		return operations;
 	}
 
 }

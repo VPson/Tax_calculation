@@ -1,4 +1,5 @@
 interface ICreateOperationDTO {
+	id?: string
 	nameStock: string,
 	quantity: number,
 	dateBuy: Date,
