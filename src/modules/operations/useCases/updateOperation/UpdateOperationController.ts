@@ -5,32 +5,32 @@ import { UpdateOperationUseCase } from './UpdateOperationUseCase';
 
 class UpdateOperationController {
 	async handle(req: Request, res: Response): Promise<Response>{
+		const { id } = req.params;
+
 		const {
-			nameStock, 
-			quantity, 
-			dateBuy, 
+			nameStock,
+			quantity,
+			dateBuy,
 			dateSell,
 			valueBuy,
 			valueSell,
 			fees
 		} = req.body;
 
-		const { id } = req.params;
-
 		const updateOperationUseCase = container.resolve(UpdateOperationUseCase);
 
-		const operation = await updateOperationUseCase.execute({
+		await updateOperationUseCase.execute({
 			id,
-			nameStock, 
-			quantity, 
-			dateBuy, 
+			nameStock,
+			quantity,
+			dateBuy,
 			dateSell,
 			valueBuy,
 			valueSell,
 			fees
 		});
 
-		return res.status(201).json(operation);
+		return res.status(201).send();
 	}
 }
 
