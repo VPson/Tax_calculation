@@ -46,11 +46,33 @@ class OperationsRepository implements IOperationsRepository{
 		return operation;
 	}
 
-	async delete(id: string): Promise<Operation[]> {
-		const operation = await this.repository.findOne({ id });
-		await this.repository.remove(operation);
+	async delete(id: string): Promise<void> {
+		await this.repository.delete(id);
+	}
 
-		return this.repository.find();
+	async update({
+		id,
+		nameStock,
+		quantity,
+		dateBuy,
+		dateSell,
+		type,
+		valueBuy,
+		valueSell,
+		fees,
+		total
+	}: ICreateOperationDTO): Promise<void> {
+		await this.repository.update(id,{
+			nameStock: nameStock,
+			quantity: quantity,
+			dateBuy: dateBuy,
+			dateSell: dateSell,
+			type: type,
+			valueBuy: valueBuy,
+			valueSell: valueSell,
+			fees: fees,
+			total: total
+		});
 	}
 }
 

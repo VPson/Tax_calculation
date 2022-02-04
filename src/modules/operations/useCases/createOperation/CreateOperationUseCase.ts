@@ -13,7 +13,7 @@ interface IRequest {
 	valueSell: number,
 	fees: number,
 	total?: number,
-	user_id?: string
+	user_id: string
 }
 
 @injectable()

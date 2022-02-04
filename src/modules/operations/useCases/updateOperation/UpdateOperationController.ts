@@ -1,10 +1,11 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
-import { CreateOperationUseCase } from './CreateOperationUseCase';
+import { UpdateOperationUseCase } from './UpdateOperationUseCase';
 
-class CreateOperationController {
+
+class UpdateOperationController {
 	async handle(req: Request, res: Response): Promise<Response>{
-		const { 
+		const {
 			nameStock, 
 			quantity, 
 			dateBuy, 
@@ -12,26 +13,25 @@ class CreateOperationController {
 			valueBuy,
 			valueSell,
 			fees
-			} = req.body;
-			
-		const { id } = req.user;
-		const user_id = id;
+		} = req.body;
 
-		const createOperationUseCase = container.resolve(CreateOperationUseCase);
+		const { id } = req.params;
 
-		const operation = await createOperationUseCase.execute({
+		const updateOperationUseCase = container.resolve(UpdateOperationUseCase);
+
+		const operation = await updateOperationUseCase.execute({
+			id,
 			nameStock, 
 			quantity, 
 			dateBuy, 
 			dateSell,
 			valueBuy,
 			valueSell,
-			fees,
-			user_id
+			fees
 		});
 
 		return res.status(201).json(operation);
 	}
 }
 
-export { CreateOperationController };
+export { UpdateOperationController };

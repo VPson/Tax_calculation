@@ -3,7 +3,6 @@ import { Operation } from '@modules/operations/infra/typeorm/entities/Operation'
 import { IOperationsRepository } from '../IOperationsRepository';
 
 class OperationsRepositoryInMemory implements IOperationsRepository{
-
 	operations: Operation[] = [];
 	
 	async create({
@@ -39,12 +38,36 @@ class OperationsRepositoryInMemory implements IOperationsRepository{
 		return operation;
 	}
 
-	async delete(id: string): Promise<Operation[]> {
-		const operations = await this.operations.filter((operation) => {
-			return operation.id !== id;
-		});
+	async delete(id: string): Promise<void> {
+		const operation = this.operations.find((operation) => operation.id === id );
+		this.operations.splice(this.operations.indexOf(operation));
 
-		return operations;
+		// const operations = await this.operations.filter((operation) => {
+		// 	operation.id !== id;
+		// });
+	}
+
+	async update({			
+		id,
+		nameStock,
+		quantity,
+		dateBuy,
+		dateSell,
+		type,
+		valueBuy,
+		valueSell,
+		fees,
+		total,}: ICreateOperationDTO): Promise<void> {
+		const findIndex = this.operations.findIndex((operation) => operation.id === id);
+		this.operations[findIndex].nameStock = nameStock;
+		this.operations[findIndex].quantity = quantity;
+		this.operations[findIndex].dateBuy = dateBuy;
+		this.operations[findIndex].dateSell = dateSell;
+		this.operations[findIndex].type = type;
+		this.operations[findIndex].valueBuy = valueBuy;
+		this.operations[findIndex].valueSell = valueSell;
+		this.operations[findIndex].fees = fees;
+		this.operations[findIndex].total = total;
 	}
 
 }
