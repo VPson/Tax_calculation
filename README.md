@@ -1,5 +1,5 @@
 # Calculo imposto em ações
-Este projeto basico em CRUD e arquitetura DDD, cujas funcionabilidades são voltadas para calculo de imposto em operações na bolsa de valores brasileira
+Este projeto basico em CRUD, cujas funcionabilidades são voltadas para calculo de imposto em operações na bolsa de valores brasileira
 
 <h1 > 
 	🚧  Projeto em construção  🚧
